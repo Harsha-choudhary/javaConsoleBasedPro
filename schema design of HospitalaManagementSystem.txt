@@ -1,0 +1,134 @@
+                                                                                HOSPITAL MANAGEMENT SYSTEM 
+
+
+
+
+### To create a database named hospital: 
+
+  ->CREATE DATABASE hospital; 
+    Use hospital; 
+    show databases;
+
+
+
++--------------------+
+| Database           |
++--------------------+
+| hospital           |
+| information_schema |
+| mysql              |
+| performance_schema |
+| sakila             |
+| sys                |
+| world              |
++--------------------+
+
+
+
+
+                    ->   1) Create the doctors table: 
+
+
+
+ 
+
+                                           CREATE TABLE doctors ( 
+
+                                            id INT NOT NULL AUTO_INCREMENT PRIMARY KEY, 
+
+                                            name VARCHAR(255) NOT NULL, 
+
+                                            specialization VARCHAR(255) NOT NULL 
+
+                                            ); 
+                         
+
+
+                        
+INSERT INTO doctors (id, name, specialization) VALUES (1, 'HARSHA', 'GENERAL MEDICINE'); 
+
+INSERT INTO doctors (id, name, specialization) VALUES (2, 'BHAVNA', 'PHYSIOTHERAPIST'); 
+
+ 
+
+ desc doctors;
+
+ +----------------+--------------+------+-----+---------+----------------+
+| Field          | Type         | Null | Key | Default | Extra          |
++----------------+--------------+------+-----+---------+----------------+
+| id             | int          | NO   | PRI | NULL    | auto_increment |
+| name           | varchar(255) | NO   |     | NULL    |                |
+| specialization | varchar(255) | NO   |     | NULL    |                |
++----------------+--------------+------+-----+---------+----------------+
+
+
+                  ->   2) Create the patients table: 
+
+
+
+
+                                             CREATE TABLE patients ( 
+
+   					     id INT NOT NULL AUTO_INCREMENT PRIMARY KEY, 
+
+   					     name VARCHAR(255) NOT NULL, 
+
+    					     age INT NOT NULL, 
+
+   					      gender VARCHAR(10) NOT NULL 
+
+                                               ); 
+
+ desc patients;
+
++--------+--------------+------+-----+---------+----------------+
+| Field  | Type         | Null | Key | Default | Extra          |
++--------+--------------+------+-----+---------+----------------+
+| id     | int          | NO   | PRI | NULL    | auto_increment |
+| name   | varchar(255) | NO   |     | NULL    |                |
+| age    | int          | NO   |     | NULL    |                |
+| gender | varchar(10)  | NO   |     | NULL    |                |
++--------+--------------+------+-----+---------+----------------+
+
+
+
+
+
+                    ->   3) Create the appointments table:
+
+
+
+                                          CREATE TABLE appointments (
+
+                                          id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
+
+                                          patient_id INT NOT NULL,
+
+                                          doctor_id INT NOT NULL,
+
+                                          appointment_date DATE NOT NULL,
+
+                                          FOREIGN KEY (patient_id) REFERENCES patients(id),
+
+                                          FOREIGN KEY (doctor_id) REFERENCES doctors(id)
+
+                                          );
+
+
+
+
+ desc appointments;
+
+
+
++-----------------+------+------+-----+---------+----------------+
+| Field           | Type | Null | Key | Default | Extra          |
++-----------------+------+------+-----+---------+----------------+
+| id              | int  | NO   | PRI | NULL    | auto_increment |
+| patient_id      | int  | NO   | MUL | NULL    |                |
+| doctor_id       | int  | NO   | MUL | NULL    |                |
+| appointmen_date | date | NO   |     | NULL    |                |
++-----------------+------+------+-----+---------+----------------+
+
+
+
