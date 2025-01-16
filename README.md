@@ -1,1 +1,1 @@
-# javaConsoleBasedProject is on MASTER here only schema or er diagram
+# javaConsoleBasedProject is on MASTER here  on main only schema or er diagram 
